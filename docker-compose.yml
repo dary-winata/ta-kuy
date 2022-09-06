@@ -1,0 +1,67 @@
+version: '3.2'
+
+services:
+  logstash:
+    build:
+      context: logstash/
+      args:
+        LOGSTASH_VERSION: '8.4.0'
+    volumes:
+      - type: bind
+        source: ./logstash/conf.d/
+        target: /usr/share/logstash/pipeline/
+        read_only: true
+      - type: bind
+        source: ./logstash/config/
+        target: /usr/share/logstash/config/
+    ports:
+      - "5044:5044"
+    expose:
+      - "5044"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - logging
+  couchdb:
+    build: ./couchdb
+    volumes:
+      - ./couchdb/log:/var/log/couchdb/
+    ports:
+      - "5984:5984"
+    environment: 
+      COUCHDB_USER: admin
+      COUCHDB_PASSWORD: password
+    networks:
+      - logging
+  initd:
+    image: buildpack-deps:focal-curl
+    command: "bash /init.sh"
+    environment: 
+      COUCHDB_URL: couchdb:5984
+      COUCHDB_AUTH: admin:password
+    volumes:
+      - ./couchdb/config/init.sh:/init.sh
+    depends_on:
+      - couchdb
+    networks:
+      - logging
+        #  filebeat:
+    #    build:
+      #      context: filebeat
+        #      args:
+        #        FILEBEAT_VERSION: '8.4.0'
+          #    entrypoint: "filebeat -e -strict.perms=false"
+      #    volumes:
+      #      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+        #      - ./couchdb/log:/var/log/couchdb
+        #    networks:
+      #      - logging
+        #    depends_on:
+      #      - logstash
+        #      - initd
+        #    links:
+      #      - logstash
+
+networks:
+  logging:
+    driver: bridge
