@@ -1,0 +1,100 @@
+[Thu, 15 Sep 2022 01:13:23 GMT] [info] [<0.32.0>] Apache CouchDB has started on http://0.0.0.0:5984/
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.103.0>] 'GET' / {1,1} from "172.18.0.5"
+Headers: [{'Accept',"*/*"},
+          {'Host',"couchdb:5984"},
+          {'User-Agent',"curl/7.68.0"}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.103.0>] OAuth Params: []
+[Thu, 15 Sep 2022 01:13:23 GMT] [info] [<0.103.0>] 172.18.0.5 - - GET / 200
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.104.0>] 'PUT' /_users {1,1} from "172.18.0.5"
+Headers: [{'Accept',"*/*"},
+          {'Authorization',"Basic YWRtaW46cGFzc3dvcmQ="},
+          {'Host',"couchdb:5984"},
+          {'User-Agent',"curl/7.68.0"}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.104.0>] OAuth Params: []
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.104.0>] Minor error in HTTP request: {unauthorized,
+                                                  <<"Name or password is incorrect.">>}
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.104.0>] Stacktrace: [{couch_httpd_auth,
+                                     default_authentication_handler,1,
+                                     [{file,"couch_httpd_auth.erl"},
+                                      {line,69}]},
+                                 {couch_httpd,authenticate_request,2,
+                                     [{file,"couch_httpd.erl"},{line,401}]},
+                                 {couch_httpd,handle_request_int,5,
+                                     [{file,"couch_httpd.erl"},{line,316}]},
+                                 {mochiweb_http,headers,5,
+                                     [{file,"mochiweb_http.erl"},{line,94}]},
+                                 {proc_lib,init_p_do_apply,3,
+                                     [{file,"proc_lib.erl"},{line,237}]}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [info] [<0.104.0>] 172.18.0.5 - - PUT /_users 401
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.104.0>] httpd 401 error response:
+ {"error":"unauthorized","reason":"Name or password is incorrect."}
+
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.105.0>] 'PUT' /_replicator {1,1} from "172.18.0.5"
+Headers: [{'Accept',"*/*"},
+          {'Authorization',"Basic YWRtaW46cGFzc3dvcmQ="},
+          {'Host',"couchdb:5984"},
+          {'User-Agent',"curl/7.68.0"}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.105.0>] OAuth Params: []
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.105.0>] Minor error in HTTP request: {unauthorized,
+                                                  <<"Name or password is incorrect.">>}
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.105.0>] Stacktrace: [{couch_httpd_auth,
+                                     default_authentication_handler,1,
+                                     [{file,"couch_httpd_auth.erl"},
+                                      {line,69}]},
+                                 {couch_httpd,authenticate_request,2,
+                                     [{file,"couch_httpd.erl"},{line,401}]},
+                                 {couch_httpd,handle_request_int,5,
+                                     [{file,"couch_httpd.erl"},{line,316}]},
+                                 {mochiweb_http,headers,5,
+                                     [{file,"mochiweb_http.erl"},{line,94}]},
+                                 {proc_lib,init_p_do_apply,3,
+                                     [{file,"proc_lib.erl"},{line,237}]}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [info] [<0.105.0>] 172.18.0.5 - - PUT /_replicator 401
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.105.0>] httpd 401 error response:
+ {"error":"unauthorized","reason":"Name or password is incorrect."}
+
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.106.0>] 'PUT' /_global_changes {1,1} from "172.18.0.5"
+Headers: [{'Accept',"*/*"},
+          {'Authorization',"Basic YWRtaW46cGFzc3dvcmQ="},
+          {'Host',"couchdb:5984"},
+          {'User-Agent',"curl/7.68.0"}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.106.0>] OAuth Params: []
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.106.0>] Minor error in HTTP request: {unauthorized,
+                                                  <<"Name or password is incorrect.">>}
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.106.0>] Stacktrace: [{couch_httpd_auth,
+                                     default_authentication_handler,1,
+                                     [{file,"couch_httpd_auth.erl"},
+                                      {line,69}]},
+                                 {couch_httpd,authenticate_request,2,
+                                     [{file,"couch_httpd.erl"},{line,401}]},
+                                 {couch_httpd,handle_request_int,5,
+                                     [{file,"couch_httpd.erl"},{line,316}]},
+                                 {mochiweb_http,headers,5,
+                                     [{file,"mochiweb_http.erl"},{line,94}]},
+                                 {proc_lib,init_p_do_apply,3,
+                                     [{file,"proc_lib.erl"},{line,237}]}]
+[Thu, 15 Sep 2022 01:13:23 GMT] [info] [<0.106.0>] 172.18.0.5 - - PUT /_global_changes 401
+[Thu, 15 Sep 2022 01:13:23 GMT] [debug] [<0.106.0>] httpd 401 error response:
+ {"error":"unauthorized","reason":"Name or password is incorrect."}
+
+[Thu, 15 Sep 2022 01:14:44 GMT] [debug] [<0.107.0>] 'PUT' /_users/org.couchdb.user:guest {1,1} from "172.18.0.1"
+Headers: [{'Accept',"application/json"},
+          {'Content-Length',"88"},
+          {'Content-Type',"application/json"},
+          {'Host',"localhost:5984"},
+          {'User-Agent',"curl/7.68.0"}]
+[Thu, 15 Sep 2022 01:14:44 GMT] [debug] [<0.107.0>] OAuth Params: []
+[Thu, 15 Sep 2022 01:14:44 GMT] [debug] [<0.237.0>] OS Process Start :: #Port<0.2604>
+[Thu, 15 Sep 2022 01:14:44 GMT] [debug] [<0.95.0>] Teach ddoc to new proc {proc,<0.237.0>,<<"javascript">>,
+                                           [],
+                                           {couch_os_process,prompt},
+                                           {couch_os_process,set_timeout},
+                                           {couch_os_process,stop}} with DDocKey: {<<"_design/_auth">>,
+                                                                                   <<"1-75efcce1f083316d622d389f3f9813f7">>}
+[Thu, 15 Sep 2022 01:14:44 GMT] [debug] [<0.237.0>] OS Process #Port<0.2604> Input  :: ["ddoc","new","_design/_auth",{"_id":"_design/_auth","_rev":"1-75efcce1f083316d622d389f3f9813f7","language":"javascript","validate_doc_update":"\n    function(newDoc, oldDoc, userCtx, secObj) {\n        if (newDoc._deleted === true) {\n            // allow deletes by admins and matching users\n            // without checking the other fields\n            if ((userCtx.roles.indexOf('_admin') !== -1) ||\n                (userCtx.name == oldDoc.name)) {\n                return;\n            } else {\n                throw({forbidden: 'Only admins may delete other user docs.'});\n            }\n        }\n\n        if ((oldDoc && oldDoc.type !== 'user') || newDoc.type !== 'user') {\n            throw({forbidden : 'doc.type must be user'});\n        } // we only allow user docs for now\n\n        if (!newDoc.name) {\n            throw({forbidden: 'doc.name is required'});\n        }\n\n        if (!newDoc.roles) {\n            throw({forbidden: 'doc.roles must exist'});\n        }\n\n        if (!isArray(newDoc.roles)) {\n            throw({forbidden: 'doc.roles must be an array'});\n        }\n\n        for (var idx = 0; idx < newDoc.roles.length; idx++) {\n            if (typeof newDoc.roles[idx] !== 'string') {\n                throw({forbidden: 'doc.roles can only contain strings'});\n            }\n        }\n\n        if (newDoc._id !== ('org.couchdb.user:' + newDoc.name)) {\n            throw({\n                forbidden: 'Doc ID must be of the form org.couchdb.user:name'\n            });\n        }\n\n        if (oldDoc) { // validate all updates\n            if (oldDoc.name !== newDoc.name) {\n                throw({forbidden: 'Usernames can not be changed.'});\n            }\n        }\n\n        if (newDoc.password_sha && !newDoc.salt) {\n            throw({\n                forbidden: 'Users with password_sha must have a salt.' +\n                    'See /_utils/script/couch.js for example code.'\n            });\n        }\n\n        if (newDoc.password_scheme === \"pbkdf2\") {\n            if (typeof(newDoc.iterations) !== \"number\") {\n               throw({forbidden: \"iterations must be a number.\"});\n            }\n            if (typeof(newDoc.derived_key) !== \"string\") {\n               throw({forbidden: \"derived_key must be a string.\"});\n            }\n        }\n\n        var is_server_or_database_admin = function(userCtx, secObj) {\n            // see if the user is a server admin\n            if(userCtx.roles.indexOf('_admin') !== -1) {\n                return true; // a server admin\n            }\n\n            // see if the user a database admin specified by name\n            if(secObj && secObj.admins && secObj.admins.names) {\n                if(secObj.admins.names.indexOf(userCtx.name) !== -1) {\n                    return true; // database admin\n                }\n            }\n\n            // see if the user a database admin specified by role\n            if(secObj && secObj.admins && secObj.admins.roles) {\n                var db_roles = secObj.admins.roles;\n                for(var idx = 0; idx < userCtx.roles.length; idx++) {\n                    var user_role = userCtx.roles[idx];\n                    if(db_roles.indexOf(user_role) !== -1) {\n                        return true; // role matches!\n                    }\n                }\n            }\n\n            return false; // default to no admin\n        }\n\n        if (!is_server_or_database_admin(userCtx, secObj)) {\n            if (oldDoc) { // validate non-admin updates\n                if (userCtx.name !== newDoc.name) {\n                    throw({\n                        forbidden: 'You may only update your own user document.'\n                    });\n                }\n                // validate role updates\n                var oldRoles = oldDoc.roles.sort();\n                var newRoles = newDoc.roles.sort();\n\n                if (oldRoles.length !== newRoles.length) {\n                    throw({forbidden: 'Only _admin may edit roles'});\n                }\n\n                for (var i = 0; i < oldRoles.length; i++) {\n                    if (oldRoles[i] !== newRoles[i]) {\n                        throw({forbidden: 'Only _admin may edit roles'});\n                    }\n                }\n            } else if (newDoc.roles.length > 0) {\n                throw({forbidden: 'Only _admin may set roles'});\n            }\n        }\n\n        // no system roles in users db\n        for (var i = 0; i < newDoc.roles.length; i++) {\n            if (newDoc.roles[i][0] === '_') {\n                throw({\n                    forbidden:\n                    'No system roles (starting with underscore) in users db.'\n                });\n            }\n        }\n\n        // no system names as names\n        if (newDoc.name[0] === '_') {\n            throw({forbidden: 'Username may not start with underscore.'});\n        }\n\n        var badUserNameChars = [':'];\n\n        for (var i = 0; i < badUserNameChars.length; i++) {\n            if (newDoc.name.indexOf(badUserNameChars[i]) >= 0) {\n                throw({forbidden: 'Character `' + badUserNameChars[i] +\n                        '` is not allowed in usernames.'});\n            }\n        }\n    }\n"}]
+[Thu, 15 Sep 2022 01:14:45 GMT] [debug] [<0.237.0>] OS Process #Port<0.2604> Output :: true
+[Thu, 15 Sep 2022 01:14:45 GMT] [debug] [<0.237.0>] OS Process #Port<0.2604> Input  :: ["reset",{"reduce_limit":true,"timeout":5000}]
+[Thu, 15 Sep 2022 01:14:45 GMT] [debug] [<0.237.0>] OS Process #Port<0.2604> Output :: true
+[Thu, 15 Sep 2022 01:14:45 GMT] [debug] [<0.237.0>] OS Process #Port<0.2604> Input  :: ["ddoc","_design/_auth",["validate_doc_update"],[{"_id":"org.couchdb.user:guest","password_scheme":"pbkdf2","iterations":10,"name":"guest","roles":["_admin"],"roles":[],"type":"user","derived_key":"399e9ce2b7e713afe3741b2367587458dd97592e","salt":"4add7ef3e94cc3cdbb12e395f94aaabb","_revisions":{"start":0,"ids":[]}},null,{"db":"_users","name":null,"roles":["_admin"]},{}]]
+[Thu, 15 Sep 2022 01:14:45 GMT] [debug] [<0.237.0>] OS Process #Port<0.2604> Output :: 1
+[Thu, 15 Sep 2022 01:14:45 GMT] [info] [<0.107.0>] 172.18.0.1 - - PUT /_users/org.couchdb.user:guest 201

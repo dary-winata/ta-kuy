@@ -14,12 +14,11 @@ services:
       - type: bind
         source: ./logstash/config/
         target: /usr/share/logstash/config/
+      - ./logstash/log/://usr/share/logstash/log/
     ports:
       - "5044:5044"
     expose:
       - "5044"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - logging
   couchdb:
@@ -33,6 +32,12 @@ services:
       COUCHDB_PASSWORD: password
     networks:
       - logging
+    volumes:
+      - type: bind
+        source: ./couchdb/config/local.ini
+        target: /usr/local/etc/couchdb/local.ini
+      - ./couchdb/log/:/usr/local/var/log/couchdb
+
   initd:
     image: buildpack-deps:focal-curl
     command: "bash /init.sh"
@@ -45,22 +50,22 @@ services:
       - couchdb
     networks:
       - logging
-        #  filebeat:
-    #    build:
-      #      context: filebeat
-        #      args:
-        #        FILEBEAT_VERSION: '8.4.0'
-          #    entrypoint: "filebeat -e -strict.perms=false"
-      #    volumes:
-      #      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
-        #      - ./couchdb/log:/var/log/couchdb
-        #    networks:
-      #      - logging
-        #    depends_on:
-      #      - logstash
-        #      - initd
-        #    links:
-      #      - logstash
+  filebeat:
+    build:
+      context: filebeat
+      args:
+        FILEBEAT_VERSION: '8.4.0'
+    entrypoint: "filebeat -e -strict.perms=false"
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./couchdb/log:/var/log/couchdb
+    networks:
+      - logging
+    depends_on:
+      - logstash
+      - initd
+    links:
+      - logstash
 
 networks:
   logging:
