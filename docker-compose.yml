@@ -21,6 +21,8 @@ services:
       - "5044"
     networks:
       - logging
+    depends_on:
+      - elasticsearch
   couchdb:
     build: ./couchdb
     volumes:
@@ -37,7 +39,6 @@ services:
         source: ./couchdb/config/local.ini
         target: /usr/local/etc/couchdb/local.ini
       - ./couchdb/log/:/usr/local/var/log/couchdb
-
   initd:
     image: buildpack-deps:focal-curl
     command: "bash /init.sh"
@@ -66,7 +67,28 @@ services:
       - initd
     links:
       - logstash
+  elasticsearch:
+    build:
+      context: elasticsearch/
+      args:
+        ELASTIC_VERSION: '8.4.0'
+    volumes:
+      - type: bind
+        source: ./elasticsearch/config/elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+        read_only: true
+      - ./elasticsearch/item:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ELASTIC_PASSWORD: elastic
+    networks:
+      - logging
 
 networks:
   logging:
     driver: bridge
+
+volumes:
+  elasticsearch:
