@@ -14,11 +14,13 @@ services:
       - type: bind
         source: ./logstash/config/
         target: /usr/share/logstash/config/
-      - ./logstash/log/://usr/share/logstash/log/
+      - ./logstash/log/:/usr/share/logstash/log/
     ports:
       - "5044:5044"
+      - "5055:5055"
     expose:
       - "5044"
+      - "5055"
     networks:
       - logging
     depends_on:
@@ -83,6 +85,22 @@ services:
       - "9300:9300"
     environment:
       ELASTIC_PASSWORD: elastic
+    networks:
+      - logging
+  heartbeat:
+    build:
+      context: heartbeat/
+      args:
+        HEARTBEAT_VERSION: '8.4.0'
+    entrypoint: "heartbeat -e -strict.perms=false"
+    volumes:
+      - ./heartbeat/heartbeat.yml:/usr/share/heartbeat/heartbeat.yml
+      - ./heartbeat/monitors.d:/usr/share/heartbeat/monitors.d
+    depends_on:
+      - logstash
+      - initd
+    links:
+      - logstash
     networks:
       - logging
 

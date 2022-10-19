@@ -1,0 +1,5 @@
+- type: icmp
+  id: couchdb-hb
+  name: couchdb-1
+  hosts: ["couchdb"]
+  schedule: '@every 10s'
